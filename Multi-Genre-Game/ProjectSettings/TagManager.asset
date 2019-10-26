@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Turret
+  - Wall
+  - Enemy
+  - Projectile
   layers:
   - Default
   - TransparentFX
