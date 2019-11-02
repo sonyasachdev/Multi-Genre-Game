@@ -7,7 +7,6 @@ public class EnemyDestroy : MonoBehaviour
     public GameObject player;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if(collision.gameObject.tag == "Projectile")
         {
             Destroy(gameObject);
@@ -20,4 +19,11 @@ public class EnemyDestroy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Make the enemy take damage
+    /// </summary>
+    public void TakeDamage()
+    {
+        Destroy(gameObject);
+    }
 }

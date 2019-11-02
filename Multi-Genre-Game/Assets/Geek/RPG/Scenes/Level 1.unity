@@ -142,6 +142,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7356281027065276889, guid: 53608a9e959b932409011a38a512ef66,
     type: 3}
   bulletForce: 20
+--- !u!50 &78867893 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2033534128782889026, guid: 454f5cb85f972c04cb2f8e41048fac67,
+    type: 3}
+  m_PrefabInstance: {fileID: 1237140400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &78867895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2033534128782889031, guid: 454f5cb85f972c04cb2f8e41048fac67,
@@ -211,6 +217,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -572537830509691636, guid: 454f5cb85f972c04cb2f8e41048fac67,
+        type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 78867893}
+    - target: {fileID: -572537830509691636, guid: 454f5cb85f972c04cb2f8e41048fac67,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1615024385}
+    - target: {fileID: -572537830509691636, guid: 454f5cb85f972c04cb2f8e41048fac67,
+        type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 78867893}
+    - target: {fileID: 0}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1615024385}
     - target: {fileID: 2033534128782889027, guid: 454f5cb85f972c04cb2f8e41048fac67,
         type: 3}
       propertyPath: m_Name
@@ -372,6 +401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182063226473424071, guid: 77bac77b71a495e418399123c2bb1169,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7182063226473424074, guid: 77bac77b71a495e418399123c2bb1169,
         type: 3}
