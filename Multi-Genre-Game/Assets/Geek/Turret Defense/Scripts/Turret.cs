@@ -8,6 +8,7 @@ public class Turret : MonoBehaviour
     public Grid grid;
     public GameObject bullet;
     Vector3 Position = new Vector3();
+    public DetectEnemy detectEnemy;
     float myLeft = 0;
     float myTop = 0;
     float myWidth = 200;
@@ -16,15 +17,15 @@ public class Turret : MonoBehaviour
     int counter;//this will be replaced with a timer
 
 
-    bool isDragging = true;
-    bool placeable = true;
-    bool isPlaced = false;
+    public bool isDragging = true;
+    public bool placeable = true;
+    public bool isPlaced = false;
     //a bool to show if it's curently active or not
 
     // Start is called before the first frame update
     void Start()
     {
-        counter = 60;
+        counter = 180;
         cam = Camera.main;
         grid = GameObject.Find("Grid").GetComponent<Grid>();
         Position = (Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -37,14 +38,6 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            isDragging = false;
-            if (placeable==true)
-                SnapToGrid();
-            else Debug.Log("This tile is occupied!");
-        }
 
         if (isDragging)
         {
@@ -59,34 +52,64 @@ public class Turret : MonoBehaviour
             //add a radius of detection for stuff
             //make it spawn a projectile
             //something like that
-            if (counter == 60)
+            if(detectEnemy.enemyDetected)
             {
-                Instantiate(bullet, transform.position, Quaternion.identity);
-                counter = 0;
+
+                
+                float angle = Mathf.Atan2(detectEnemy.enemiesInRange[0].transform.position.y-transform.position.y, detectEnemy.enemiesInRange[0].transform.position.x - transform.position.x) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle-90));
+
+                if (counter == 180)
+                {
+                    Instantiate(bullet, transform.position, transform.rotation);
+                    counter = 0;
+                }
+                else
+                    counter++;
             }
             else
-                counter++;
+            {
+                if (counter < 180)
+                    counter++;
+            }
+            
         }
     }
 
     //move the turret after it's been placed
     public void OnMouseDown()
     {
-        if(isPlaced)
+        if(!isPlaced)
             isDragging = true;
 
     }
 
+    public void OnMouseUp()
+    {
+        Debug.Log("attempting to place");
+        isDragging = false;
+        if (placeable == true)
+            SnapToGrid();
+        else Debug.Log("This tile is occupied!");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        placeable = false;
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        if (collision.gameObject.tag.Equals("Turret"))
+        {
+            placeable = false;
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        placeable = true;
-        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        if (collision.gameObject.tag.Equals("Turret"))
+        {
+            placeable = true;
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+        }
+            
     }
     //need a method to snap turret placement to grid
     //check if turret's placement is valid
