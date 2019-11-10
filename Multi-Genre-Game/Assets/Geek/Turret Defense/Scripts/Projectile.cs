@@ -19,4 +19,10 @@ public class Projectile : MonoBehaviour
     {
         transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Enemy"))
+            collision.gameObject.GetComponent<Enemy>().health -= 1;
+    }
 }
