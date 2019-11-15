@@ -45,7 +45,7 @@ public class MeleeAttack : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "Enemy")
             {
-                hit.collider.gameObject.GetComponent<EnemyDestroy>().TakeDamage();
+                hit.collider.gameObject.GetComponent<EnemyDestroy>().TakeDamage(50);
             }
         }
     }
