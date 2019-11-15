@@ -14,8 +14,13 @@ public class EnemyDestroy : MonoBehaviour
         else if (collision.gameObject.tag == "Player")
         {
             //Damage Player Method Called
-            Destroy(player);
-            Debug.Log("Player is Hurt");
+            if(PlayerLives.maxLives <= 0)
+            {
+                //Destroy(player);
+                //Call the Hurt Method
+            }
+            
+            
         }
     }
 
