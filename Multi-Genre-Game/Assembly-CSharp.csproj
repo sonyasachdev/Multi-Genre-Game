@@ -63,6 +63,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Bullet.cs" />
+    <Compile Include="Assets\City Builder\scripts\destroyTree.cs" />
+    <Compile Include="Assets\City Builder\scripts\invintoryUpdate.cs" />
     <Compile Include="Assets\City Builder\scripts\onStartUp.cs" />
     <Compile Include="Assets\Geek\RPG\Scripts\BulletDestroy.cs" />
     <Compile Include="Assets\Geek\RPG\Scripts\EnemyDestroy.cs" />

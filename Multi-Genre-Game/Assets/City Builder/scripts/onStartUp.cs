@@ -11,7 +11,7 @@ public class onStartUp : MonoBehaviour
         int screenHeight = 1;
         int screenWidth = 1;
 
-        float startHeight = 4.5f;
+        float startHeight = 5.5f;
         float startWidth = -9.5f;
 
         int[,] treeSpawn = new int[10,20];
